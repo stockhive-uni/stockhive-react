@@ -1,12 +1,12 @@
-name: Build and Test React Application
+name: Build React Application
 
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events for both master and dev branches
   push:
-    branches: [ master, dev ]
+    branches: [ '*' ]
   pull_request:
-    branches: [ master, dev ]
+    branches: [ '*' ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
