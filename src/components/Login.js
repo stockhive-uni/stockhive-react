@@ -40,8 +40,8 @@ function Login() {
     <>
     <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
     <form onSubmit={handleSubmit}>
-    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="w-full p-3 mb-4 border rounded-md"required/>
-    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="w-full p-3 mb-4 border rounded-md" required/>
+    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
+    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required/>
     <button type="submit" disabled={loading}>
         {loading ? 'Loading...' : (isLogin ? 'Login' : 'Sign Up')}
     </button>
