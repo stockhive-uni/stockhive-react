@@ -18,9 +18,10 @@ function Logout() {
     // If user is not logged in, do not display the button.
     if (!user) {
         return null;
-    } else {
-        <button onClick={handleLogout}>Logout</button>
     }
+    return(
+        <button onClick={handleLogout}>Logout</button>
+    );
 }
 
 export default Logout;
