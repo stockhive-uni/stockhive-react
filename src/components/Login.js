@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { logIn, signUp } from '../../lib/auth';
+import { logIn} from '../../lib/auth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -16,9 +16,7 @@ function Login() {
     try {
       if (isLogin) {
         await logIn(email, password);
-      } else {
-        await signUp(email, password);
-      }
+      } 
       router.push('/dashboard');
     } catch (error) {
       setError(error.message);
@@ -29,24 +27,21 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError('Please enter your email and password.'); // Basic validation
-      return;
-    }
     handleAuth();
   };
-
+  
+  //make function to validate if user exists in database
+  
   return (
     <>
-    <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
+    <h2>Login</h2>
     <form onSubmit={handleSubmit}>
     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required/>
     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required/>
     <button type="submit" disabled={loading}>
-        {loading ? 'Loading...' : (isLogin ? 'Login' : 'Sign Up')}
+        {loading ? 'Loading...' : ('Login')}
     </button>
     </form>
-    <button onClick={() => setIsLogin(!isLogin)}>{isLogin ? 'Create an account' : 'Already have an account?'}</button>
     </>
   );
 };

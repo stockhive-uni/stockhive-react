@@ -8,10 +8,11 @@ function Logout() {
     // Handle logout functionality
     function handleLogout() {
         logout().then(() => {
-            router.push('/login');
+            console.log("Logout Successful");
+            router.push('/');
         })
         .catch((error) => {
-            console.error("Failed:", error.message);
+            console.error("Error:", error.message);
         });
     }
 

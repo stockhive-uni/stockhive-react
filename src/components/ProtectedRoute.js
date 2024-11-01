@@ -9,7 +9,7 @@ function ProtectedRoute({ children }) {
   useEffect(() => {
     console.log("ProtectedRoute user:", user, "loading:", loading);
     if (!loading && !user) {
-      router.push('/login');
+      router.push('/');
     }
   }, [user, loading, router]);
 
