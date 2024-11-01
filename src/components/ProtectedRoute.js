@@ -7,13 +7,13 @@ function ProtectedRoute({ children }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("ProtectedRoute user:", user, "loading:", loading); // Debugging log
+    console.log("ProtectedRoute user:", user, "loading:", loading);
     if (!loading && !user) {
       router.push('/login');
     }
   }, [user, loading, router]);
 
-  if (loading) return <div>Loading...</div>; // Show loading state
+  if (loading) return <div>Loading...</div>; 
   return user ? children : null;
 }
 
