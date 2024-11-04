@@ -17,17 +17,15 @@ const LoginComponent = () => {
     
    try {
       console.log(email, password);
-      await signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password) //400 error on this part whenever incorrect login information
       .then((userInformation) => {
         setLoading(false);
         console.log("User: ", userInformation.user);
         router.push('/dashboard');
-
-        //fetch info from
       })
     }
     catch (error) {
-      setLoginError(error.message); //getting a 400 error constantly no idea why
+      setLoginError("Incorrect email/password, try again."); 
     }
     setLoading(false);
   }

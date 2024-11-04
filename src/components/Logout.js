@@ -1,16 +1,18 @@
 import { useRouter } from 'next/router';
-import { logout } from '../../lib/auth';
+import { auth } from '../../lib/firebase';
 import { useAuth } from '../../lib/AuthContext';
+import { signOut } from 'firebase/auth';
 
 function Logout() {
     const router = useRouter();
     const { user } = useAuth();
     // Handle logout functionality
     function handleLogout() {
-        logout().then(() => {
-            console.log("Logout Successful");
+        signOut(auth).then(() => {
+            console.log("Logged out");
             router.push('/');
-        })
+        }
+        )
         .catch((error) => {
             console.error("Error:", error.message);
         });
