@@ -10,12 +10,18 @@ const LoginComponent = () => {
   const [loginError, setLoginError] = useState('');
   const router = useRouter();
   const auth = getAuth();
+  const regex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/ //regex expression was taken from this website: https://regex101.com/library/SOgUIV
 
   const Login = async(e) => { //used the firedocs documentation to assist in using the provided functions: https://firebase.google.com/docs/auth/web/start
    e.preventDefault();
    setLoading(true);
+
+   //regular expression validation on top of HTML validation for email
+
+   let UserEmailValid = regex.test(email);
     
-   try {
+   if (UserEmailValid) {
+    try {
       console.log(email, password);
       await signInWithEmailAndPassword(auth, email, password) //400 error on this part whenever incorrect login information
       .then((userInformation) => {
@@ -26,9 +32,14 @@ const LoginComponent = () => {
     }
     catch (error) {
       setLoginError("Incorrect email/password, try again."); 
-    }
-    setLoading(false);
+    }  
+   }
+   else {
+    setLoginError("Invalid Email, try again.");
+   }
+   setLoading(false);
   }
+   
   
   return (
     <>
