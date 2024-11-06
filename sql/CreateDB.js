@@ -147,8 +147,8 @@ function CreateDB() {
                         FOREIGN KEY (old_location_id) REFERENCES location (location_id),
                         FOREIGN KEY (new_location_id) REFERENCES location (location_id)
                     )`,
-                    `INSERT INTO store (location, postcode) VALUES
-                    ('Sheffield', 'S11 1AA')
+                    `INSERT INTO store (store_id, location, postcode) VALUES
+                    (1, 'Sheffield', 'S11 1AA')
                     `,
                     `INSERT INTO employee (employee_id, store_id, first_name, last_name, access) VALUES
                     (1, 1, 'Test', 'User', 1111)
