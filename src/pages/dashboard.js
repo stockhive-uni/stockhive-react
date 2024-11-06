@@ -1,6 +1,7 @@
 import ProtectedRoute from '../components/ProtectedRoute';
 import Logout from '../components/Logout';
 import { useState, useEffect } from 'react';
+import PopulateUsers from '../../sql/PopulateUsers';
 
 export default function Dashboard() {
   useEffect(() => {
@@ -14,6 +15,7 @@ export default function Dashboard() {
     };
 
     createDatabase();
+    PopulateUsers();
   }, []);
 
   return (
