@@ -23,7 +23,7 @@ const LoginComponent = () => {
    if (UserEmailValid) {
     try {
       console.log(email, password);
-      await signInWithEmailAndPassword(auth, email, password) //400 error on this part whenever incorrect login information
+      await signInWithEmailAndPassword(auth, email, password) 
       .then((userInformation) => {
         setLoading(false);
         console.log("User: ", userInformation.user);
